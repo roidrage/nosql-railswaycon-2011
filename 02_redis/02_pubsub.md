@@ -32,7 +32,7 @@
 
 ## Pub ##
 
-    PUBLISH notifications Mathias signed up
+    PUBLISH notifications "Mathias signed up"
 
 !SLIDE small
 

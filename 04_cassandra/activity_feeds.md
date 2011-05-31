@@ -8,6 +8,8 @@
 
 !SLIDE bullets incremental
 
+## Activity Feed
+
 * User mathias follows user steven
 * So do 100000 other users
 * Feed of all activities
@@ -111,17 +113,12 @@
 
 !SLIDE smaller
 
-## Paginate Feed
+## Fetch Ranges
 
     @@@ ruby
-    cassie.get(:Activities, 'mathias', :start => 2.hours.ago,
+    cassie.get(:Activities, 'mathias', :start => UUID.new(2.hours.ago),
                                        :reversed => true)
 
-!SLIDE
-
-## Fetch Activity Ranges
-
-    @@@ ruby
 !SLIDE bullets incremental
 
 ## Why Cassandra?

@@ -133,7 +133,23 @@ $(".websockets-demo").bind("showoff:show", function (event) {
     }
     websocket = new WebSocket("ws://localhost:8081");
     websocket.onmessage = onMessage;
+    websocket.onclose = function(evt) {
+      console.log('error');
+      var li = $(document.createElement('li'));
+      li.text("Can't connect to WebSocket server");
+      $(self).append(li);
+    };
     setTimeout(function() {websocket.send("new-users");}, 1000);
   });
 });
 </script>
+
+!SLIDE bullets incremental
+
+# Redis
+
+* Fast
+* Simple
+* Swiss Army Knife Database
+* Not Distributed (yet)
+* Limited by memory (not for long)

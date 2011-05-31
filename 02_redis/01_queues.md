@@ -113,6 +113,13 @@
     @@@ ruby
     @redis.brpop("jobs")
 
+!SLIDE small
+
+## Mark Job as In-Progress
+
+    @@@ ruby
+    @redis.lpush("jobs-in-progress", jobs)
+
 !SLIDE smaller
 
 ## [Resque](http://github.com/defunkt/resque)
@@ -131,3 +138,13 @@
 
     @@@ ruby
     Resque.enqueue(ConfirmationEmailWorker, "meyer@paperplanes.de")
+
+!SLIDE bullets
+
+## Why Redis?
+
+* Simplest Queue Possible
+* Atomic Operations
+* Counters for statistics
+* Visibility
+* Fast

@@ -46,7 +46,7 @@
 
     PUBLISH notifications.new-user "Mathias signed up"
 
-!SLIDE smallest
+!SLIDE smaller
 
 ## WebSocket Server ##
 
@@ -67,7 +67,7 @@
 
     @@@ ruby
     @subscriber = EM::Hiredis.connect
-    @subscriber.subscribe("notifications.*")
+    @subscriber.subscribe("notifications")
 
     @subscriber.on(:message) do |channel, data|
       SOCKETS.each {|socket| socket.send(data)}

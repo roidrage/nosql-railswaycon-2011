@@ -3,6 +3,7 @@
   "sections": [
     {"section": "01_introduction"},
     {"section": "02_redis"},
-    {"section": "03_riak"}
+    {"section": "03_riak"},
+    {"section": "04_cassandra"}
   ]
 }

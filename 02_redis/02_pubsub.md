@@ -118,6 +118,10 @@
       end
     end
 
+!SLIDE
+
+# Demo
+
 !SLIDE websockets-demo center bullets
 
 <ul></ul>

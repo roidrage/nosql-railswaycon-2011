@@ -8,13 +8,15 @@
 
 !SLIDE
 
-## WebSockets ##
+## [WebSockets](http://www.html5rocks.com/tutorials/websockets/basics/) ##
 
 !SLIDE bullets incremental
 
-## EventMachine ##
+## [EventMachine](http://rubyeventmachine.com) ##
 
 * Non-blocking I/O for Ruby
+* [em-websocket](https://github.com/igrigorik/em-websocket)
+* [em-hiredis](https://github.com/mloughran/em-hiredis)
 
 !SLIDE
 
@@ -71,7 +73,7 @@
       SOCKETS.each {|socket| socket.send(data)}
     end
 
-!SLIDE small
+!SLIDE smaller
 
 ## Subscribe on patterns
 
@@ -83,7 +85,7 @@
       @subscriber.psubscribe(pattern)
     end
 
-!SLIDE small
+!SLIDE smaller
 
 ## Subscriber    
 
@@ -92,7 +94,7 @@
       SOCKETS[pattern].each {|socket| socket.send(data)}
     end
 
-!SLIDE small
+!SLIDE smaller
 
 ## Your Web Frontend
 
@@ -103,7 +105,7 @@
       websocket.send("new-users");
     }, 1000);
 
-!SLIDE small
+!SLIDE smaller
 
 ## Your Rails App
 

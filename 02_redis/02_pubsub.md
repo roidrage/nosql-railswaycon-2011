@@ -137,8 +137,12 @@ $(".websockets-demo").bind("showoff:show", function (event) {
     }
     websocket = new WebSocket("ws://localhost:8081");
     websocket.onmessage = onMessage;
+    websocket.onopen = function(evt) {
+      var li = $(document.createElement('li'));
+      li.text("Connected to WebSocket server");
+      $(self).append(li);
+    };
     websocket.onclose = function(evt) {
-      console.log('error');
       var li = $(document.createElement('li'));
       li.text("Can't connect to WebSocket server");
       $(self).append(li);
@@ -147,6 +151,14 @@ $(".websockets-demo").bind("showoff:show", function (event) {
   });
 });
 </script>
+
+!SLIDE bullets incremental
+
+# Why Redis?
+
+* Built-in Pub/Sub
+* Persistence on top
+* Backend/Frontend Glue
 
 !SLIDE bullets incremental
 

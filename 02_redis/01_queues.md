@@ -83,14 +83,14 @@
     @@@ ruby
     @redis.lpush("jobs", JSON.dump(job))
 
-!SLIDE smallest
+!SLIDE smaller
 
 ## Under the hood
 
     LPUSH jobs,
     {"id":1, "class":"ConfirmationEmailWorker", "args":["meyer@paperplanes.de"]}
 
-!SLIDE smaller
+!SLIDE small
 
 ## Workers
 

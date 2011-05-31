@@ -117,3 +117,23 @@
         redis.publish("new-users")
       end
     end
+
+!SLIDE websockets-demo center bullets
+
+<ul></ul>
+
+<script>
+$(".websockets-demo").bind("showoff:show", function (event) {
+  $(this).children().each(function() {
+    var self = this;
+    function onMessage(evt) {
+      var li = $(document.createElement('li'));
+      li.text(evt.data)
+      $(self).append(li);
+    }
+    websocket = new WebSocket("ws://localhost:8081");
+    websocket.onmessage = onMessage;
+    setTimeout(function() {websocket.send("new-users");}, 1000);
+  });
+});
+</script>

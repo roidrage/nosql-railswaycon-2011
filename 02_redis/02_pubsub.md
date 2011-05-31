@@ -1,0 +1,117 @@
+!SLIDE
+
+# The Problem #
+
+!SLIDE
+
+## Notify Web Frontends of Backend Changes ##
+
+!SLIDE
+
+## WebSockets ##
+
+!SLIDE bullets incremental
+
+## EventMachine ##
+
+* Non-blocking I/O for Ruby
+
+!SLIDE
+
+## Redis Pub/Sub ##
+
+!SLIDE small
+
+## Sub ##
+
+    SUBSCRIBE notifications
+
+!SLIDE small
+
+## Pub ##
+
+    PUBLISH notifications Mathias signed up
+
+!SLIDE small
+
+## Pattern-Matching Subscriptions ##
+
+    PSUBSCRIBE notifications.*
+
+!SLIDE small
+
+## Publish ##
+
+    PUBLISH notifications.new-user "Mathias signed up"
+
+!SLIDE smallest
+
+## WebSocket Server ##
+
+    @@@ ruby
+    EventMachine::WebSocket.start(:host => '0.0.0.0', :port => 8081) do |ws|
+      ws.onopen do
+        SOCKETS << ws
+      end
+
+      ws.onclose do
+        SOCKETS.delete ws
+      end
+    end
+
+!SLIDE small
+
+## Subscriber ##
+
+    @@@ ruby
+    @subscriber = EM::Hiredis.connect
+    @subscriber.subscribe("notifications.*")
+
+    @subscriber.on(:message) do |channel, data|
+      SOCKETS.each {|socket| socket.send(data)}
+    end
+
+!SLIDE small
+
+## Subscribe on patterns
+
+    @@@ ruby
+    SOCKETS = {}
+    ws.onmessage do |pattern|
+      SOCKETS[pattern] ||= []
+      SOCKETS[pattern] << ws
+      @subscriber.psubscribe(pattern)
+    end
+
+!SLIDE small
+
+## Subscriber    
+
+    @@@ ruby
+    @subscriber.on(:pmessage) do |pattern, channel, data|
+      SOCKETS[pattern].each {|socket| socket.send(data)}
+    end
+
+!SLIDE small
+
+## Your Web Frontend
+
+    @@@ javascript
+    websocket = new WebSocket("ws://localhost:8081");
+    websocket.onmessage = function(evt) { onMessage(evt); };
+    setTimeout(function() {i
+      websocket.send("new-users");
+    }, 1000);
+
+!SLIDE small
+
+## Your Rails App
+
+    @@@ ruby
+    class User
+      after_create :notify_subscribers
+
+      def notify_subscribers
+        redis.publish("new-users")
+      end
+    end

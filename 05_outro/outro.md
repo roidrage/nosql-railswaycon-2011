@@ -4,11 +4,14 @@
 
 !SLIDE
 
-## Finding the Right Tool is Work! ##
+## Finding the Right Tool is Hard! ##
 
 !SLIDE
 
-## Benchmark, Evaluate, Test, Benchmark. ##
+## Benchmark
+## Evaluate
+## Test
+## Benchmark
 
 !SLIDE
 

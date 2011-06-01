@@ -139,7 +139,7 @@
     @@@ ruby
     Resque.enqueue(ConfirmationEmailWorker, "meyer@paperplanes.de")
 
-!SLIDE bullets
+!SLIDE bullets incremental
 
 ## Why Redis?
 

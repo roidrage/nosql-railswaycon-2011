@@ -3,7 +3,8 @@
 # Four Problems, #
 # Three Databases #
 
-#### [Mathias Meyer](http://paperplanes.de), [@roidrage](http://twitter.com/roidrage)
+#### [Mathias Meyer](http://paperplanes.de)
+#### [@roidrage](http://twitter.com/roidrage)
 
 !SLIDE center
 

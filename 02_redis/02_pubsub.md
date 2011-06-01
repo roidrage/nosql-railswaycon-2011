@@ -128,7 +128,8 @@
 
 <script>
 $(".websockets-demo").bind("showoff:show", function (event) {
-  $(this).children().each(function() {
+  $(this).children('ul').each(function() {
+    $(this).children().remove();
     var self = this;
     function onMessage(evt) {
       var li = $(document.createElement('li'));

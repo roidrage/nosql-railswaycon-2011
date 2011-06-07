@@ -87,7 +87,7 @@
 
     cassie = Cassandra.new('Twotter', '127.0.0.1:9160')
     cassie.insert(:Activities, 'mathias', {
-      TimeUUID.new => {'steven' => 'had a beer',
+      UUID.new => {'steven' => 'had a beer',
                        'type' => 'current-status'}
     })
 

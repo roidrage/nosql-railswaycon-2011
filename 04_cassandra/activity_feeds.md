@@ -58,7 +58,7 @@
     Twotter["mathias"]
            [:Activities]
 
-!SLIDE
+!SLIDE smaller
 
 ## Column Family
 
@@ -67,7 +67,7 @@
            [:Activities]
            [Time.now]
 
-!SLIDE
+!SLIDE smaller
 
 ## Columns
 
@@ -116,8 +116,9 @@
 ## Fetch Ranges
 
     @@@ ruby
-    cassie.get(:Activities, 'mathias', :start => UUID.new(2.hours.ago),
-                                       :reversed => true)
+    cassie.get(:Activities, 'mathias',
+               :start => UUID.new(2.hours.ago),
+               :reversed => true)
 
 !SLIDE bullets incremental
 
